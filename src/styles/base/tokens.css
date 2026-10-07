@@ -1,0 +1,107 @@
+/**
+ * Design tokens.
+ *
+ * Every colour, space, radius and shadow resolves to a variable declared
+ * here, so re-theming the whole site is an edit to this one file.
+ *
+ * The look is editorial rather than "dashboard": warm paper, near-black
+ * ink, two confident accents, solid blocks and hard offset shadows instead
+ * of gradients and frosted glass.
+ */
+
+:root {
+  /* — palette: Ink, Pine & Sienna on warm paper ———————————————— */
+  --paper: #f4efe3;
+  --paper-deep: #ebe3d2;
+  --surface: #fffdf7;
+  --surface-sunk: #f0e9da;
+
+  --ink: #1b1a17;
+  --ink-soft: #4f4b42;
+  --ink-faint: #817a6c;
+
+  --accent: #0f4f46;        /* deep pine */
+  --accent-ink: #f4efe3;    /* text on pine */
+  --accent-wash: #dde7e2;
+
+  --hot: #c5502a;           /* burnt sienna */
+  --hot-wash: #f5ddd1;
+  --gold: #e0a92e;          /* mustard, for small highlights */
+
+  --line: #1b1a17;          /* chunky borders are drawn in ink */
+  --line-soft: rgba(27, 26, 23, 0.18);
+
+  --success: #2f7d53;
+  --danger: #b3342a;
+
+  /* Hard, offset shadows — the main reason the cards read as drawn
+     rather than rendered. */
+  --lift-sm: 3px 3px 0 var(--line);
+  --lift: 5px 5px 0 var(--line);
+  --lift-lg: 8px 8px 0 var(--line);
+
+  /* — typography ——————————————————————————————————— */
+  --font-display: "Bricolage Grotesque", "Kanit", Impact, sans-serif;
+  --font-sans: "Work Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --step--1: clamp(0.84rem, 0.81rem + 0.14vw, 0.92rem);
+  --step-0: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem);
+  --step-1: clamp(1.15rem, 1.07rem + 0.37vw, 1.38rem);
+  --step-2: clamp(1.45rem, 1.28rem + 0.76vw, 1.95rem);
+  --step-3: clamp(1.95rem, 1.55rem + 1.8vw, 3rem);
+  --step-4: clamp(2.6rem, 1.8rem + 3.6vw, 5rem);
+
+  /* — space, radius, motion ——————————————————————————— */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --border-w: 2px;
+  --container: 1140px;
+  --nav-height: 76px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --speed: 0.22s;
+}
+
+/* — dark theme: the same paper palette inverted into warm ink ——————— */
+:root[data-theme="dark"] {
+  --paper: #16150f;
+  --paper-deep: #100f0b;
+  --surface: #211f17;
+  --surface-sunk: #1a1812;
+
+  --ink: #f2ebdb;
+  --ink-soft: #bdb4a0;
+  --ink-faint: #8d8574;
+
+  --accent: #5fb49c;        /* pine, lifted for dark ground */
+  --accent-ink: #11231f;
+  --accent-wash: #1f3b34;
+
+  --hot: #e8764a;
+  --hot-wash: #3a2017;
+  --gold: #f0c24e;
+
+  --line: #f2ebdb;
+  --line-soft: rgba(242, 235, 219, 0.2);
+
+  --success: #5fb49c;
+  --danger: #e8705f;
+
+  --lift-sm: 3px 3px 0 var(--line);
+  --lift: 5px 5px 0 var(--line);
+  --lift-lg: 8px 8px 0 var(--line);
+}

@@ -1,0 +1,128 @@
+/** Page scaffolding: container, section rhythm and reveal animation. */
+
+.container {
+  width: min(100% - 2 * var(--space-5), var(--container));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-9);
+  position: relative;
+}
+
+/* Alternating grounds, separated by a drawn rule rather than a soft fade. */
+.section:nth-of-type(even) {
+  background: var(--paper-deep);
+  border-block: var(--border-w) solid var(--line);
+}
+
+.section__header {
+  max-width: 44rem;
+  margin-bottom: var(--space-7);
+}
+
+.section__eyebrow {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: var(--space-4);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--gold);
+  color: #1b1a17;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.section__title {
+  font-size: var(--step-3);
+}
+
+/* A hand-drawn-feeling underline under every section title. */
+.section__title::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 7px;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--hot);
+}
+
+.section__subtitle {
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  font-size: var(--step-1);
+}
+
+/* — reveal-on-scroll ————————————————————————————————— */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Loader shown until the first render completes. */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  transition: opacity 0.4s var(--ease), visibility 0.4s;
+}
+
+#loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader__ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid var(--line);
+  border-top-color: var(--hot);
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Skip link for keyboard users. */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: 200;
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--gold);
+  color: #1b1a17;
+  font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform var(--speed) var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}

@@ -1,0 +1,247 @@
+/** Landing section. */
+
+.hero {
+  position: relative;
+  padding-block: var(--space-7) var(--space-8);
+  overflow: hidden;
+  border-bottom: var(--border-w) solid var(--line);
+}
+
+/* A quiet wash of colour in the top-right corner, kept well behind the
+   portrait panel so the two shapes never fight. */
+.hero__glow {
+  position: absolute;
+  top: -42%;
+  right: -16%;
+  width: min(520px, 62vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent-wash);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: var(--space-7);
+  min-height: clamp(520px, calc(100vh - var(--nav-height) - var(--space-8)), 720px);
+}
+
+.hero__greeting {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero__name {
+  margin-top: var(--space-4);
+  font-size: var(--step-4);
+  line-height: 0.95;
+  color: var(--ink);
+}
+
+/* The surname sits on a mustard highlight, like a marker stroke. */
+.hero__name::after {
+  content: "";
+  display: block;
+  width: 180px;
+  max-width: 60%;
+  height: 10px;
+  margin-top: var(--space-2);
+  background: var(--gold);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+}
+
+.hero__role {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-height: 2em;
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 700;
+  color: var(--hot);
+}
+
+.hero__caret {
+  width: 4px;
+  height: 1.05em;
+  background: var(--hot);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero__tagline {
+  max-width: 44ch;
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  font-size: var(--step-1);
+}
+
+.hero__socials {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: var(--border-w) solid var(--line);
+}
+
+.hero__stat-value {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.hero__stat-label {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+/* — portrait —————————————————————————————————————
+ *
+ * The figure stands inside a drawn panel and breaks out over its top edge.
+ * That overlap is what makes the composition read as deliberate rather
+ * than a cut-out dropped onto the page.
+ */
+.hero__portrait {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  justify-self: center;
+  align-self: end;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  isolation: isolate;
+}
+
+/* The panel: solid mustard, drawn border, hard shadow. Mustard rather than
+   pine because the subject wears black — a dark panel would swallow him. */
+.hero__portrait-ring {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 74%;
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--gold);
+  box-shadow: var(--lift);
+  z-index: -1;
+}
+
+/* Mustard dot grid peeking out from behind the panel, bottom-left. */
+.hero__portrait::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  bottom: -22px;
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(var(--line) 1.7px, transparent 1.7px);
+  background-size: 15px 15px;
+  opacity: 0.4;
+  z-index: -2;
+}
+
+.hero__portrait-img {
+  position: relative;
+  width: auto;
+  max-height: min(70vh, 560px);
+  object-fit: contain;
+  /* Feet dissolve into the panel so the cut-out never shows a hard edge. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 99%);
+  mask-image: linear-gradient(to bottom, #000 88%, transparent 99%);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-5);
+  right: calc(-1 * var(--space-5));
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--lift-sm);
+  animation: bob 2.4s var(--ease) infinite;
+}
+
+.hero__scroll:hover {
+  background: var(--hot);
+  color: var(--surface);
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@media (max-width: 940px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: var(--space-6);
+  }
+
+  .hero__portrait {
+    order: -1;
+    place-items: center;
+  }
+
+  .hero__portrait-img {
+    max-height: 40vh;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  /* The dot grid would hang off the left edge on narrow screens. */
+  .hero__portrait::before {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-4);
+  }
+}

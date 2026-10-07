@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mostafa Khalifa — Full-Stack Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Mostafa Khalifa, a full-stack software engineer in Alexandria, Egypt, building web applications, REST APIs and AI services with Python (FastAPI), React, TypeScript, Laravel and Docker."
+    />
+    <meta name="author" content="Mostafa Khalifa" />
+    <meta name="theme-color" content="#f4efe3" />
+    <link rel="canonical" href="https://mostafa-khalifaa.github.io/portfolio/" />
+
+    <!-- Open Graph / social previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mostafa Khalifa — Full-Stack Software Engineer" />
+    <meta
+      property="og:description"
+      content="Full-stack engineer building web applications, REST APIs and AI services with Python, React, TypeScript and Docker."
+    />
+    <meta property="og:image" content="assets/images/hero-portrait.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/styles/main.css" />
+
+    <script>
+      // Applied before first paint so the page never flashes the wrong theme.
+      // ThemeService repeats this logic; duplicating ~6 lines here is the
+      // accepted trade-off for avoiding a flash of the wrong palette.
+      (function () {
+        try {
+          var stored = localStorage.getItem("mk-portfolio-theme");
+          if (stored) document.documentElement.setAttribute("data-theme", stored);
+        } catch (e) {
+          /* storage blocked — keep the dark default from the html attribute */
+        }
+      })();
+    </script>
+
+    <script type="module" src="src/main.js"></script>
+  </head>
+
+  <body>
+    <div id="loader"><div class="loader__ring"></div></div>
+
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <!-- Every section is rendered into #app by src/main.js. -->
+    <div id="app"></div>
+
+    <noscript>
+      <div class="container" style="padding: 4rem 0">
+        <h1>Mostafa Khalifa — Full-Stack Software Engineer</h1>
+        <p>
+          This portfolio renders with JavaScript. Please enable it, or reach me
+          directly at
+          <a href="mailto:mostafa.khalifa.m22@gmail.com">mostafa.khalifa.m22@gmail.com</a>.
+        </p>
+      </div>
+    </noscript>
+  </body>
+</html>

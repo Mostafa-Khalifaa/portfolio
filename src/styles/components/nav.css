@@ -1,0 +1,158 @@
+/** Sticky top navigation. */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  background: var(--paper);
+  border-bottom: var(--border-w) solid transparent;
+  transition: border-color var(--speed) var(--ease);
+}
+
+.nav.is-scrolled {
+  border-bottom-color: var(--line);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/*
+ * The monogram is painted as a mask, so it always matches the text colour
+ * and needs no separate asset for the dark theme. `--logo` is set inline
+ * by NavBar from the profile data.
+ */
+.nav__mark {
+  display: block;
+  width: 64px;
+  height: 44px;
+  background-color: var(--ink);
+  -webkit-mask-image: var(--logo);
+  mask-image: var(--logo);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: background-color var(--speed) var(--ease);
+}
+
+.nav__brand:hover .nav__mark {
+  background-color: var(--hot);
+}
+
+.nav__brand-name {
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  font-weight: 700;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav__link {
+  position: relative;
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: color var(--speed) var(--ease);
+}
+
+.nav__link:hover {
+  color: var(--ink);
+}
+
+.nav__link.is-active {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* A drawn marker under the current section rather than a pill. */
+.nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 0;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--hot);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav__burger {
+  display: none;
+}
+
+@media (max-width: 940px) {
+  .nav__brand-name {
+    display: none;
+  }
+
+  .nav__cv span {
+    display: none;
+  }
+
+  .nav__cv {
+    padding: 0.7rem 0.85rem;
+  }
+
+  .nav__burger {
+    display: inline-grid;
+  }
+
+  .nav__list {
+    position: fixed;
+    inset: var(--nav-height) 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-4);
+    background: var(--surface);
+    border-bottom: var(--border-w) solid var(--line);
+    /* Collapsed by default; `.is-open` is toggled by the burger button. */
+    transform: translateY(-120%);
+    visibility: hidden;
+    transition: transform 0.3s var(--ease), visibility 0.3s;
+  }
+
+  .nav__list.is-open {
+    transform: none;
+    visibility: visible;
+  }
+
+  .nav__link {
+    padding: var(--space-3) var(--space-2);
+    border-bottom: 1.5px solid var(--line-soft);
+    font-size: var(--step-0);
+  }
+
+  .nav__link.is-active::after {
+    left: 0;
+    right: auto;
+    width: 24px;
+  }
+}
